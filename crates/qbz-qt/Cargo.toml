@@ -214,7 +214,7 @@ objc2 = "0.5"
 # `MainThreadMarker` — in THIS generation it is exported by objc2-foundation,
 # not by the objc2 root (objc2-foundation-0.2.2/src/lib.rs:152, ungated). The
 # native integration imports it from here.
-objc2-foundation = { version = "0.2", default-features = false, features = [
+objc2-foundation = { version = "0.3", default-features = false, features = [
     "std",
     # NSThread gates `MainThreadMarker::new()` itself
     # (objc2-foundation-0.2.2/src/thread.rs:210-213) — without it the type
