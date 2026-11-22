@@ -126,6 +126,8 @@ fn begin(runtime: &Arc<AppRuntime<LoggingAdapter>>, track_id: u64, start_secs: u
     *PENDING_SEEK.lock().unwrap() = (start_secs > 0).then_some((track_id, start_secs * 1000));
     let mut already_fetching = false;
     if crate::firefox_engine::enabled() {
+        // No Firefox yet and the download wasn't agreed to: ask again.
+        crate::firefox_engine::ask_if_missing();
         // Firefox makes the sound on this machine: local playback to the UI.
         already_fetching = crate::firefox_engine::begin(track_id, start_secs * 1000);
         *BEGUN_AT.lock().unwrap() = Some(Instant::now());

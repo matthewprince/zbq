@@ -82,7 +82,8 @@ uses Qt WebEngine and the official player's own (not bit-perfect) audio instead.
 
 * No offline Qobuz downloads, no Qobuz Connect, no casting of Qobuz tracks.
 * Bit-perfect Qobuz needs Firefox: the installed one, or Firefox ESR downloaded from
-  Mozilla (checked against the SHA-512 Mozilla publishes) when none is installed. With
+  Mozilla (checked against the SHA-512 Mozilla publishes) when none is installed and the
+  user agrees to the download. With
   `ZBQ_QOBUZ_AUDIO=web`, Qobuz audio is not bit-perfect.
 * Pause is Firefox's own: resuming skips the few milliseconds of audio Firefox had
   already handed to PipeWire. (Pausing the stream inside PipeWire kept every sample, but

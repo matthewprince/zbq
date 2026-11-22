@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Start the AppImage offscreen on clean distro containers (desktop libraries
-# only: no Qt, no build tools): it must initialize, start its Qobuz engine
-# (Firefox ESR is downloaded inside each container) and survive the
-# observation window. No account, no audio.
+# only: no Qt, no build tools): it must initialize, start its Qobuz engine and
+# survive the observation window. No Firefox is installed there, so ZBQ asks for
+# it; ZBQ_FIREFOX_AUTO_INSTALL=1 downloads Firefox ESR instead. No account, no audio.
 #   packaging/appimage/smoke-distros.sh dist/ZBQ-<version>-x86_64.AppImage
 #   DISTROS="debian:12 fedora:41" ... to pick
 set -uo pipefail
@@ -23,7 +23,7 @@ for image in $distros; do
   if docker run --rm -v "$appimage:/app/ZBQ.AppImage:ro" -v "$root/scripts:/scripts:ro" "$image" bash -c "
       $setup >/tmp/setup.log 2>&1 || { tail -5 /tmp/setup.log; exit 3; }
       useradd -m tester
-      su tester -c 'cd /tmp && APPIMAGE_EXTRACT_AND_RUN=1 python3 /scripts/packaging/smoke_release.py /app/ZBQ.AppImage --seconds 75 --log /tmp/smoke.log; rc=\$?; grep -E \"firefox-engine|qobuz-engine. ready|QbzCore initialized|smoke\" /tmp/smoke.log | cut -c1-170 | head -8; exit \$rc'
+      su tester -c 'cd /tmp && ZBQ_FIREFOX_AUTO_INSTALL=${ZBQ_FIREFOX_AUTO_INSTALL:-} APPIMAGE_EXTRACT_AND_RUN=1 python3 /scripts/packaging/smoke_release.py /app/ZBQ.AppImage --seconds 75 --log /tmp/smoke.log; rc=\$?; grep -E \"firefox-engine|firefox prompt|qobuz-engine. ready|QbzCore initialized|smoke\" /tmp/smoke.log | cut -c1-170 | head -8; exit \$rc'
     "; then
     echo "PASS $image"
   else

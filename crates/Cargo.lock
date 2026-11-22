@@ -3917,7 +3917,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-app"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.23.1",
  "chrono",
@@ -3943,7 +3943,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-audio"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "alsa",
  "alsa-sys",
@@ -4007,7 +4007,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-control"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "log",
  "qbz-core",
@@ -4026,7 +4026,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -4047,7 +4047,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-credentials"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "aes-gcm",
  "ashpd",
@@ -4065,7 +4065,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-dac-wizard-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "qbz-audio",
  "qbz-i18n",
@@ -4074,7 +4074,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-disc"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.23.1",
  "dirs 6.0.0",
@@ -4094,7 +4094,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-dsd"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dst-decoder",
  "id3",
@@ -4105,7 +4105,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-external-reco"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4124,7 +4124,7 @@ version = "0.1.0"
 
 [[package]]
 name = "qbz-integrations"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "discord-rich-presence",
@@ -4141,7 +4141,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-jellyfin"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "reqwest",
  "rustls",
@@ -4187,7 +4187,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-log"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "dirs 5.0.1",
@@ -4199,7 +4199,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-lyrics"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4218,7 +4218,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-media-cache"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "rusqlite",
  "serde_json",
@@ -4227,7 +4227,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-media-controls"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "ashpd",
  "async-channel",
@@ -4263,7 +4263,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-models"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "chrono",
@@ -4277,7 +4277,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-music-link"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "log",
@@ -4293,7 +4293,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-player"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "futures-util",
@@ -4316,7 +4316,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-playlist-import"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "encoding_rs",
  "futures-util",
@@ -4333,7 +4333,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-plex"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dirs 6.0.0",
  "open",
@@ -4345,7 +4345,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-purchases"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "futures-util",
  "lofty",
@@ -4363,7 +4363,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-qobuz"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "chrono",
@@ -4383,7 +4383,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-qt"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-io",
  "async-trait",
@@ -4460,7 +4460,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-radio"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dirs 5.0.1",
  "log",
@@ -4471,7 +4471,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-reco"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "log",
  "qbz-integrations",
@@ -4484,7 +4484,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-rip"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "flacenc",
  "lofty",
@@ -4495,7 +4495,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-secrets"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "aes-gcm",
  "base64 0.23.1",
@@ -4512,7 +4512,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-source"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "log",
@@ -4535,7 +4535,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-subsonic"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "md-5",
  "reqwest",
@@ -4547,7 +4547,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-text-utils"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "qbz-i18n",
@@ -4555,7 +4555,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-theme"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "image",
  "serde",
@@ -4564,7 +4564,7 @@ dependencies = [
 
 [[package]]
 name = "qbz-updater"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.23.1",
  "chrono",
@@ -4586,7 +4586,7 @@ dependencies = [
 
 [[package]]
 name = "qbzd"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "clap",

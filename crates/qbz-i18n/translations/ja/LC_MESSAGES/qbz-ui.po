@@ -7795,3 +7795,15 @@ msgstr "しばらくしてからもう一度お試しください"
 
 msgid "Couldn't check for another version"
 msgstr "別のバージョンを確認できませんでした"
+
+msgid "Firefox is needed for Qobuz"
+msgstr "Qobuz の再生には Firefox が必要です"
+
+msgid "ZBQ plays Qobuz through Firefox, and no Firefox was found on this computer. Download Firefox ESR from Mozilla now (about 80 MB)? It stays in ZBQ's own folder and doesn't change your system. A Firefox you install yourself is picked up automatically."
+msgstr "ZBQ は Firefox を使って Qobuz を再生しますが、このコンピューターに Firefox が見つかりませんでした。Mozilla から Firefox ESR を今すぐダウンロードしますか（約 80 MB）？ZBQ 専用のフォルダーに保存され、システムは変更されません。ご自身で Firefox をインストールした場合は自動的に使用されます。"
+
+msgid "Download Firefox"
+msgstr "Firefox をダウンロード"
+
+msgid "Qobuz needs Firefox. ZBQ asks again when you sign in or play a Qobuz track."
+msgstr "Qobuz には Firefox が必要です。サインインするときや Qobuz のトラックを再生するときに、もう一度確認します。"

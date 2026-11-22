@@ -13,7 +13,8 @@
 //! `qobuz_engine_shadow.js`, which plays the tracks the app queues as one continuous
 //! stream (gapless, nothing cut at track ends). Qobuz's code does all fetching,
 //! signing and decrypting, as in any browser; the audio never leaves Firefox. With no
-//! Firefox installed, Firefox ESR is downloaded from Mozilla (`firefox_provision.rs`).
+//! Firefox installed, ZBQ asks before downloading Firefox ESR from Mozilla
+//! (`firefox_provision.rs`): Firefox is required for Qobuz playback here.
 //!
 //! The app talks to it like to the Qt WebEngine host: `qobuz_engine` commands
 //! ([`page_call`]) and state answers (`qobuz_engine::on_state_json`). Playback
@@ -143,6 +144,19 @@ static DEVICE_VOLUME: Mutex<Option<f32>> = Mutex::new(None);
 static LAUNCH_SINK: Mutex<Option<String>> = Mutex::new(None);
 /// What the output sink plays without resampling: (sink, rates).
 static DEVICE_FORMAT: Mutex<Option<(String, Option<out::DeviceRates>)>> = Mutex::new(None);
+/// No Firefox found: the user agreed to download Firefox ESR (or
+/// `ZBQ_FIREFOX_AUTO_INSTALL=1`). Until then ZBQ asks (Main.qml's prompt).
+static DOWNLOAD_OK: AtomicBool = AtomicBool::new(false);
+/// The prompt is showing.
+static ASKING: AtomicBool = AtomicBool::new(false);
+/// The engine asked once on its own; later asks come from sign-in and Qobuz play.
+static ASKED: AtomicBool = AtomicBool::new(false);
+
+/// Woken by the prompt's answer.
+fn decided() -> &'static tokio::sync::Notify {
+    static NOTIFY: OnceLock<tokio::sync::Notify> = OnceLock::new();
+    NOTIFY.get_or_init(tokio::sync::Notify::new)
+}
 
 /// Firefox mode: on unless `ZBQ_QOBUZ_AUDIO=web`, or when no Firefox is installed and
 /// none can be downloaded (Mozilla's builds are fetched for Linux x86-64).
@@ -158,7 +172,7 @@ pub fn enabled() -> bool {
                 true
             }
             None if cfg!(all(target_os = "linux", target_arch = "x86_64")) => {
-                log::info!("[firefox-engine] no Firefox installed: Firefox ESR will be downloaded from Mozilla");
+                log::info!("[firefox-engine] no Firefox installed: ZBQ asks before downloading Firefox ESR from Mozilla");
                 true
             }
             None => {
@@ -201,14 +215,75 @@ fn is_snap_firefox(path: &Path) -> bool {
     head.starts_with(b"#!") && String::from_utf8_lossy(&head[..n]).contains("/snap/")
 }
 
-/// The Firefox to run: the one found at startup, else a downloaded Firefox ESR.
+/// The Firefox to run: the one found at startup, one installed since, or Firefox ESR
+/// downloaded once the user agrees. Waits (rechecking every few seconds for a Firefox
+/// the user installs themselves) until one of those happens.
 async fn firefox_binary() -> Result<PathBuf, String> {
     if let Some(path) = BINARY.lock().unwrap().clone().filter(|p| p.is_file()) {
         return Ok(path);
     }
+    loop {
+        if SHUTDOWN.load(Ordering::SeqCst) {
+            return Err("ZBQ is closing".into());
+        }
+        if let Some(path) = find_firefox() {
+            set_asking(false);
+            log::info!("[firefox-engine] Qobuz plays through Firefox at {}", path.display());
+            *BINARY.lock().unwrap() = Some(path.clone());
+            return Ok(path);
+        }
+        if DOWNLOAD_OK.load(Ordering::SeqCst) || std::env::var("ZBQ_FIREFOX_AUTO_INSTALL").is_ok_and(|v| v == "1") {
+            set_asking(false);
+            break;
+        }
+        if !ASKED.swap(true, Ordering::SeqCst) {
+            set_asking(true);
+        }
+        tokio::select! {
+            _ = decided().notified() => {}
+            _ = tokio::time::sleep(Duration::from_secs(3)) => {}
+        }
+    }
     let path = crate::firefox_provision::provision().await?;
     *BINARY.lock().unwrap() = Some(path.clone());
     Ok(path)
+}
+
+fn set_asking(on: bool) {
+    if ASKING.swap(on, Ordering::SeqCst) == on {
+        return;
+    }
+    if on {
+        log::info!("[firefox-engine] no Firefox found: asking whether to download Firefox ESR");
+    }
+    crate::qobuz_engine_bridge::ui(move |mut b| b.as_mut().set_firefox_prompt(on));
+}
+
+/// Ask again (sign-in, Qobuz play) when Firefox is still missing and the download
+/// wasn't agreed to.
+pub fn ask_if_missing() {
+    if !enabled() || DOWNLOAD_OK.load(Ordering::SeqCst) {
+        return;
+    }
+    if BINARY.lock().unwrap().as_ref().is_some_and(|p| p.is_file()) || find_firefox().is_some() {
+        return;
+    }
+    set_asking(true);
+}
+
+/// The prompt's answer (`QbzQobuzEngine.answerFirefoxPrompt`).
+pub fn answer_prompt(download: bool) {
+    set_asking(false);
+    if download {
+        log::info!("[firefox-engine] Firefox ESR download agreed");
+        DOWNLOAD_OK.store(true, Ordering::SeqCst);
+        decided().notify_one();
+    } else {
+        log::info!("[firefox-engine] Firefox ESR download declined");
+        crate::toast_qt::info(qbz_i18n::t(
+            "Qobuz needs Firefox. ZBQ asks again when you sign in or play a Qobuz track.",
+        ));
+    }
 }
 
 fn profile_dir() -> Result<PathBuf, String> {
@@ -421,6 +496,9 @@ async fn host(mut rx: mpsc::UnboundedReceiver<Cmd>) {
             return;
         }
         if let Err(e) = firefox_binary().await {
+            if SHUTDOWN.load(Ordering::SeqCst) {
+                return;
+            }
             log::warn!("[firefox-engine] {e}");
             crate::toast_qt::error(qbz_i18n::t(
                 "Couldn't set up Firefox for Qobuz playback. Check the connection, install Firefox, or start ZBQ with ZBQ_QOBUZ_AUDIO=web.",

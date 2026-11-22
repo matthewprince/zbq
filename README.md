@@ -31,8 +31,8 @@ chmod +x ZBQ-*-x86_64.AppImage
   Arch and anything newer. Tested on clean installs of each.
 * Needs FUSE to mount itself, which desktop distributions have. Where it is missing (a
   container, say), run it with `--appimage-extract-and-run`.
-* Uses your installed Firefox for Qobuz playback, or downloads Firefox ESR from Mozilla
-  on first use (checked against the SHA-512 Mozilla publishes).
+* Needs Firefox for Qobuz playback: it uses yours, or asks to download Firefox ESR from
+  Mozilla when none is installed (checked against the SHA-512 Mozilla publishes).
 * Check the download with `sha256sum -c ZBQ-<version>-x86_64.AppImage.sha256`.
 * ZBQ checks this repository's releases for updates: menu > Check for updates now.
 
@@ -44,8 +44,8 @@ chmod +x ZBQ-*-x86_64.AppImage
   link.
 * With Firefox installed, Qobuz plays bit-perfect and gapless: Qobuz's player runs in a
   hidden Firefox, which keeps each file's own sample rate, and ZBQ sets PipeWire to it.
-  Signing in opens Qobuz's own page in a normal Firefox window. Without Firefox (or with
-  `ZBQ_QOBUZ_AUDIO=web`) Qobuz's player runs inside ZBQ and its audio is not
+  Signing in opens Qobuz's own page in a normal Firefox window. With
+  `ZBQ_QOBUZ_AUDIO=web`, Qobuz's player runs inside ZBQ instead and its audio is not
   bit-perfect.
 * Not available: offline Qobuz downloads, Qobuz Connect, casting Qobuz tracks.
   Purchases are listed; download them from qobuz.com and add the folder to your

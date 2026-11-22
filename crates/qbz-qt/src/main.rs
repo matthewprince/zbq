@@ -980,6 +980,8 @@ fn enter_shell(session: auth_qt::SessionInfo) {
 /// Login screen primary button / recovery banner: the system-browser OAuth
 /// flow on a background task; phases and results hop back to Qt.
 pub(crate) fn start_login() {
+    // Qobuz's sign-in page opens in Firefox: ask again if it is still missing.
+    firefox_engine::ask_if_missing();
     {
         let guard = LOGIN_TASK.lock().unwrap();
         if guard.is_some() {

@@ -994,6 +994,44 @@ ApplicationWindow {
         }
     }
 
+    // No Firefox found. Qobuz plays through Firefox here (src/firefox_engine.rs),
+    // so ZBQ asks before downloading Firefox ESR from Mozilla. Rust raises
+    // QbzQobuzEngine.firefoxPrompt at startup, and again on sign-in or Qobuz play
+    // while Firefox is still missing; it lowers it when a Firefox turns up (one the
+    // user installs is picked up within seconds), which closes this unanswered.
+    QbzConfirmModal {
+        id: firefoxPrompt
+        anchors.fill: parent
+        title: QbzSession.tr("Firefox is needed for Qobuz", QbzSession.trRev)
+        body: QbzSession.tr("ZBQ plays Qobuz through Firefox, and no Firefox was found on this computer. Download Firefox ESR from Mozilla now (about 80 MB)? It stays in ZBQ's own folder and doesn't change your system. A Firefox you install yourself is picked up automatically.", QbzSession.trRev)
+        cancelLabel: QbzSession.tr("Not now", QbzSession.trRev)
+        confirmLabel: QbzSession.tr("Download Firefox", QbzSession.trRev)
+        danger: false
+        onConfirmed: {
+            QbzQobuzEngine.answerFirefoxPrompt(true)
+            if (screenLoader.item)
+                screenLoader.item.forceActiveFocus()
+        }
+        onCancelled: {
+            QbzQobuzEngine.answerFirefoxPrompt(false)
+            if (screenLoader.item)
+                screenLoader.item.forceActiveFocus()
+        }
+    }
+
+    Connections {
+        target: QbzQobuzEngine
+        function onFirefoxPromptChanged() {
+            if (QbzQobuzEngine.firefoxPrompt && !firefoxPrompt.opened) {
+                console.log("[qml] firefox prompt shown")
+                firefoxPrompt.open()
+            } else if (!QbzQobuzEngine.firefoxPrompt && firefoxPrompt.opened) {
+                console.log("[qml] firefox prompt closed: Firefox found")
+                firefoxPrompt.close()
+            }
+        }
+    }
+
     // The tray's four signals (src/tray_bridge.rs:87-100). Rust owns no window
     // (§2.3), so every tray click hops ksni thread -> tray_qt verb ->
     // tray_bridge::ui() -> qsignal -> here, and this block is where it finally

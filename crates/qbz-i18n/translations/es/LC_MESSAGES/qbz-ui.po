@@ -7820,3 +7820,15 @@ msgstr "Inténtalo de nuevo en un momento"
 
 msgid "Couldn't check for another version"
 msgstr "No se pudo buscar otra versión"
+
+msgid "Firefox is needed for Qobuz"
+msgstr "Qobuz necesita Firefox"
+
+msgid "ZBQ plays Qobuz through Firefox, and no Firefox was found on this computer. Download Firefox ESR from Mozilla now (about 80 MB)? It stays in ZBQ's own folder and doesn't change your system. A Firefox you install yourself is picked up automatically."
+msgstr "ZBQ reproduce Qobuz a través de Firefox y no se ha encontrado Firefox en este equipo. ¿Descargar ahora Firefox ESR de Mozilla (unos 80 MB)? Se guarda en la carpeta propia de ZBQ y no modifica tu sistema. Si instalas Firefox por tu cuenta, ZBQ lo detecta automáticamente."
+
+msgid "Download Firefox"
+msgstr "Descargar Firefox"
+
+msgid "Qobuz needs Firefox. ZBQ asks again when you sign in or play a Qobuz track."
+msgstr "Qobuz necesita Firefox. ZBQ volverá a preguntar cuando inicies sesión o reproduzcas una pista de Qobuz."

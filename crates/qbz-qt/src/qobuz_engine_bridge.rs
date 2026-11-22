@@ -40,6 +40,8 @@ pub mod qbz_qobuz_engine_bridge {
         #[qproperty(bool, login_open)]
         /// The official player runs in Firefox (`firefox_engine.rs`), not here.
         #[qproperty(bool, firefox_mode)]
+        /// No Firefox found: ask whether to download Firefox ESR (`Main.qml`).
+        #[qproperty(bool, firefox_prompt)]
         type QbzQobuzEngine = super::QbzQobuzEngineRust;
 
         /// Registers the Qt-thread hop. Called from `Main.qml`'s boot sweep and,
@@ -54,6 +56,10 @@ pub mod qbz_qobuz_engine_bridge {
         /// The login overlay's close button: give up on this sign-in attempt.
         #[qinvokable]
         fn cancel_login(self: Pin<&mut QbzQobuzEngine>);
+
+        /// The Firefox prompt's answer: download Firefox ESR now, or not now.
+        #[qinvokable]
+        fn answer_firefox_prompt(self: Pin<&mut QbzQobuzEngine>, download: bool);
 
         /// Ask the page to run `window.__zbq[name](...JSON.parse(args))`.
         #[qsignal]
@@ -72,6 +78,7 @@ pub struct QbzQobuzEngineRust {
     engine_url: QString,
     login_open: bool,
     firefox_mode: bool,
+    firefox_prompt: bool,
 }
 
 impl Default for QbzQobuzEngineRust {
@@ -89,6 +96,7 @@ impl Default for QbzQobuzEngineRust {
             .as_str()),
             login_open: false,
             firefox_mode,
+            firefox_prompt: false,
         }
     }
 }
@@ -260,5 +268,10 @@ impl qbz_qobuz_engine_bridge::QbzQobuzEngine {
         self.register_thread();
         crate::qobuz_playback::cancel_pending();
         crate::cancel_login();
+    }
+
+    pub fn answer_firefox_prompt(self: Pin<&mut Self>, download: bool) {
+        self.register_thread();
+        crate::firefox_engine::answer_prompt(download);
     }
 }

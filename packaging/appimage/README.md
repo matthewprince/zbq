@@ -10,7 +10,8 @@ app links that a desktop system does not already have.
   or Wayland client libraries, GLib, D-Bus, the ALSA library and GTK 3.
 - PipeWire for bit-perfect Qobuz playback (ZBQ sets it to each track's rate). Local files
   can also play through ALSA directly.
-- Firefox: the installed one, else Firefox ESR downloaded from Mozilla on first use.
+- Firefox, required for Qobuz playback: the installed one, else ZBQ asks to download
+  Firefox ESR from Mozilla.
 - Without FUSE (in a container, say): `--appimage-extract-and-run`.
 
 ## Building
@@ -39,7 +40,8 @@ packaging/appimage/smoke-distros.sh dist/ZBQ-<version>-x86_64.AppImage
 
 Starts the AppImage offscreen on clean Ubuntu 22.04, Ubuntu 24.04, Debian 12, Fedora 41
 and Arch containers (desktop libraries only, no Qt or build tools). It must initialize,
-provision Firefox ESR and stay up for the observation window. No account, no audio.
+ask about Firefox (none is installed there; `ZBQ_FIREFOX_AUTO_INSTALL=1` downloads
+Firefox ESR instead) and stay up for the observation window. No account, no audio.
 `DISTROS="debian:12 fedora:41"` picks a subset.
 
 ## Releasing
