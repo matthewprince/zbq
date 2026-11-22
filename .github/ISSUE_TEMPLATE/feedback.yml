@@ -1,0 +1,39 @@
+name: Feedback
+description: General feedback, UX thoughts, or non-bug discussion
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Feedback
+      description: Share your thoughts, impressions, or experience using ZBQ.
+    validations:
+      required: true
+
+  - type: textarea
+    id: works-well
+    attributes:
+      label: What works well?
+
+  - type: textarea
+    id: improvements
+    attributes:
+      label: What could be improved?
+
+  - type: input
+    id: version
+    attributes:
+      label: ZBQ version (optional)
+      placeholder: e.g. 0.1.0
+
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution (optional)
+      placeholder: e.g. Arch Linux, Ubuntu 24.04
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Anything else you'd like to share.

@@ -1,0 +1,8 @@
+name = "zbq-api-proxy"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = false
+routes = [{ pattern = "zbq.qobuzify.app", custom_domain = true }]
+
+# Secrets (wrangler secret put <NAME>): LASTFM_API_KEY, LASTFM_SHARED_SECRET,
+# DISCOGS_KEY, DISCOGS_SECRET, TIDAL_CLIENT_ID, TIDAL_CLIENT_SECRET.

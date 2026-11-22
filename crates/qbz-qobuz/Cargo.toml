@@ -1,0 +1,45 @@
+[package]
+name = "qbz-qobuz"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Qobuz catalog and library API client (no signing, no streaming)"
+
+[dependencies]
+qbz-models = { path = "../qbz-models" }
+
+# Async
+tokio = { workspace = true }
+futures-util = { workspace = true }
+
+# HTTP
+reqwest = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Wipes response bodies from memory after redaction
+zeroize = "1"
+
+# Time
+chrono = { workspace = true }
+
+# Regex
+regex = { workspace = true }
+
+# Logging
+log = { workspace = true }
+
+# Error handling
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+# Used only by examples/lyrics_probe.rs (read-only live probe of the lyrics
+# endpoint): loads the saved OAuth token / credentials for login.
+qbz-credentials = { path = "../qbz-credentials" }
+# The offline-gate tests build a reqwest client, which panics with
+# "No provider set" until a process-level rustls CryptoProvider exists. The app
+# installs one at startup; a test binary has to do it itself.
+rustls = { version = "0.23", features = ["aws_lc_rs"] }

@@ -1,0 +1,46 @@
+name: Feature request
+description: Suggest an idea or improvement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ZBQ plays Qobuz only through Qobuz's official web player. Requests that
+        would undo that (downloads, offline copies, direct stream access) can't
+        be accepted; `COMPLIANCE.md` explains why.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: |
+        What problem are you trying to solve?
+        Why is the current behavior insufficient?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the feature or change you would like to see.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative solutions or workarounds you've considered.
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / impact
+      description: Does this affect audio, UI, performance, or packaging?
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups, references, or related projects are welcome.

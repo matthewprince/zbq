@@ -1,0 +1,281 @@
+{
+ "Type": "Syllable",
+ "Content": [
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 5.0,
+    "EndTime": 6.95,
+    "Syllables": [
+     {
+      "Text": "Paper",
+      "StartTime": 5.0,
+      "EndTime": 5.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "lan",
+      "StartTime": 5.45,
+      "EndTime": 5.65,
+      "IsPartOfWord": true
+     },
+     {
+      "Text": "terns",
+      "StartTime": 5.65,
+      "EndTime": 5.9,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "over",
+      "StartTime": 5.9,
+      "EndTime": 6.35,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "the",
+      "StartTime": 6.35,
+      "EndTime": 6.65,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "bay",
+      "StartTime": 6.65,
+      "EndTime": 6.95,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  },
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 8.5,
+    "EndTime": 10.9,
+    "Syllables": [
+     {
+      "Text": "Count",
+      "StartTime": 8.5,
+      "EndTime": 8.95,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "the",
+      "StartTime": 8.95,
+      "EndTime": 9.25,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "lights",
+      "StartTime": 9.25,
+      "EndTime": 9.7,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "and",
+      "StartTime": 9.7,
+      "EndTime": 10.0,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "drift",
+      "StartTime": 10.0,
+      "EndTime": 10.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "away",
+      "StartTime": 10.45,
+      "EndTime": 10.9,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  },
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 12.0,
+    "EndTime": 14.1,
+    "Syllables": [
+     {
+      "Text": "Every",
+      "StartTime": 12.0,
+      "EndTime": 12.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "wave",
+      "StartTime": 12.45,
+      "EndTime": 12.9,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "a",
+      "StartTime": 12.9,
+      "EndTime": 13.2,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "little",
+      "StartTime": 13.2,
+      "EndTime": 13.65,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "slower",
+      "StartTime": 13.65,
+      "EndTime": 14.1,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  },
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 16.0,
+    "EndTime": 18.4,
+    "Syllables": [
+     {
+      "Text": "Hold",
+      "StartTime": 16.0,
+      "EndTime": 16.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "the",
+      "StartTime": 16.45,
+      "EndTime": 16.75,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "note",
+      "StartTime": 16.75,
+      "EndTime": 17.2,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "and",
+      "StartTime": 17.2,
+      "EndTime": 17.5,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "let",
+      "StartTime": 17.5,
+      "EndTime": 17.8,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "it",
+      "StartTime": 17.8,
+      "EndTime": 18.1,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "go",
+      "StartTime": 18.1,
+      "EndTime": 18.4,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  },
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 21.0,
+    "EndTime": 23.4,
+    "Syllables": [
+     {
+      "Text": "Morning",
+      "StartTime": 21.0,
+      "EndTime": 21.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "comes",
+      "StartTime": 21.45,
+      "EndTime": 21.9,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "in",
+      "StartTime": 21.9,
+      "EndTime": 22.2,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "shades",
+      "StartTime": 22.2,
+      "EndTime": 22.65,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "of",
+      "StartTime": 22.65,
+      "EndTime": 22.95,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "blue",
+      "StartTime": 22.95,
+      "EndTime": 23.4,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  },
+  {
+   "Type": "Vocal",
+   "OppositeAligned": false,
+   "Lead": {
+    "StartTime": 25.0,
+    "EndTime": 27.25,
+    "Syllables": [
+     {
+      "Text": "Fold",
+      "StartTime": 25.0,
+      "EndTime": 25.45,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "the",
+      "StartTime": 25.45,
+      "EndTime": 25.75,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "map",
+      "StartTime": 25.75,
+      "EndTime": 26.05,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "and",
+      "StartTime": 26.05,
+      "EndTime": 26.35,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "start",
+      "StartTime": 26.35,
+      "EndTime": 26.8,
+      "IsPartOfWord": false
+     },
+     {
+      "Text": "anew",
+      "StartTime": 26.8,
+      "EndTime": 27.25,
+      "IsPartOfWord": false
+     }
+    ]
+   }
+  }
+ ]
+}

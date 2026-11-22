@@ -1,0 +1,22 @@
+[package]
+name = "qbz-purchases"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Qobuz purchases: listing, filter, format labels, registry (no audio downloads)"
+
+[dependencies]
+qbz-models = { path = "../qbz-models" }
+qbz-qobuz = { path = "../qbz-qobuz" }
+qbz-library = { path = "../qbz-library" }
+tokio = { workspace = true }
+reqwest = { workspace = true }
+futures-util = { workspace = true }
+lofty.workspace = true
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"
+rusqlite = { version = "0.40", features = ["bundled"] }

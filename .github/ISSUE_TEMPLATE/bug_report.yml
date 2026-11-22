@@ -1,0 +1,112 @@
+name: Bug report
+description: Tell us about something that is not working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this: ZBQ is in beta, and reports are what make it
+        better. No GitHub account? Use the form at https://qobuzify.app/zbq/report.
+
+        Please describe what happened and, if possible, how to reproduce it. Logs help with most reports, but they
+        are not required when the issue is self-explanatory or unavailable.
+
+        If you investigated the cause, please include what you found. Patches
+        are welcome, but never required.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of ZBQ is affected?
+      options:
+        - Startup or crash
+        - Qobuz playback
+        - Audio output or bit-perfect
+        - Qobuz sign-in or catalog
+        - Local library
+        - Lyrics
+        - Interface or navigation
+        - Installation or update
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: platform
+    attributes:
+      label: Linux distribution
+      placeholder: e.g. Ubuntu 24.04, Fedora 41, Arch
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Tell us what you observed and what you expected instead.
+      placeholder: Describe the problem in your own words.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can we reproduce it?
+      description: If it is intermittent, describe what you were doing before it appeared.
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Observe...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ZBQ version
+      description: Find it under About.
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installation method
+      options:
+        - AppImage
+        - Built from source
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      description: Add only what seems relevant to this report.
+      placeholder: |
+        Desktop environment / display server:
+        Audio output (PipeWire device / DAC):
+        GPU:
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Logs make most bugs much faster to diagnose and often reveal whether
+        the cause is ZBQ, packaging, configuration or the surrounding system.
+
+        If they are relevant and available, open Settings > Developer >
+        View logs, choose Upload (public), and paste the link here.
+        For startup failures, the terminal output is enough.
+      placeholder: |
+        Log URL:
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Screenshots or additional context
+      description: Drag in images or files, or add anything else that may help.

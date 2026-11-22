@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=ZBQ
+GenericName=Music Player
+Comment=Hi-fi player for Qobuz, local files and media servers
+Exec=zbq %U
+Icon=lol.zbq.ZBQ
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+Keywords=music;audio;qobuz;hifi;bit-perfect;flac;lyrics;
+MimeType=x-scheme-handler/zbq;
+StartupWMClass=zbq
+StartupNotify=true

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>lol.zbq.ZBQ</id>
+  <name>ZBQ</name>
+  <summary>Hi-fi player for Qobuz, local files and media servers</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <description>
+    <p>
+      ZBQ plays your Qobuz subscription, your local library and your media servers
+      (Plex, Jellyfin, Subsonic/Navidrome) through one interface. Qobuz plays
+      through Qobuz's own web player, bit-perfect and gapless, with nothing bypassed.
+      Animated, word-synced lyrics come from the Qobuzify lyrics server.
+    </p>
+    <p>ZBQ is a fork of QBZ and is not affiliated with Qobuz.</p>
+  </description>
+  <launchable type="desktop-id">lol.zbq.ZBQ.desktop</launchable>
+  <categories>
+    <category>AudioVideo</category>
+    <category>Audio</category>
+    <category>Player</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-11-21"/>
+  </releases>
+</component>
